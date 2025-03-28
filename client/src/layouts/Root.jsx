@@ -1,12 +1,15 @@
 import { Outlet } from "react-router";
 import Home from "./homepage/Home";
+import Navbar from "../components/header/Navbar";
+import Footer from "../components/footer/Footer";
 
 const Root = () => {
     return (
         <div>
-            this is root component for root layouts testingg
+            <Navbar />
             <Home />
             <Outlet />
+            <Footer />
         </div>
     );
 };
