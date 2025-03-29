@@ -18,7 +18,7 @@ const Services = () => {
             <p>the majority have suffered alteration in some form, by injected humour, or randomised <br /> words which don't look even slightly believable. </p>
             <div className='grid grid-cols-3 justify-self-center gap-5'>
                 {
-                    services.map(service => <ServiceCard key={service._id} service={service} />)
+                    services.map(service => <ServiceCard key={service.service_id} service={service} />)
                 }
             </div>
         </div >

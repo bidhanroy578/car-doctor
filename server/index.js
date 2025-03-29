@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -30,9 +30,16 @@ async function run() {
       .collection("servicesList");
     app.get("/services", async (req, res) => {
       const options = {
-        projection: { title: 1, price: 1, img: 1 },
+        projection: { title: 1, price: 1, img: 1, _id: 0, service_id: 1 },
       };
       const result = await servicesListCollection.find({}, options).toArray();
+      res.send(result);
+    });
+
+    app.get("/services/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { service_id: id };
+      const result = await servicesListCollection.findOne(query);
       res.send(result);
     });
     // Send a ping to confirm a successful connection

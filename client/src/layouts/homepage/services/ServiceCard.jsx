@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 
 const ServiceCard = ({ service }) => {
     const navigate = useNavigate()
-    const { _id, title, price, img } = service;
+    const { service_id, title, price, img } = service;
     const handleArrowClick = (id) => {
         navigate(`/service/detail/${id}`)
     }
@@ -17,7 +17,7 @@ const ServiceCard = ({ service }) => {
                 <h2 className="card-title">{title}</h2>
                 <div className=" text-red-500 text-xl flex justify-between items-center">
                     <span>{price}</span>
-                    <button onClick={() => handleArrowClick(_id)} className="hover:scale-110 active:scale-95 transition-transform hover:bg-red-500 hover:text-white p-2 rounded-full cursor-pointer "><FaArrowRight /></button>
+                    <button onClick={() => handleArrowClick(service_id)} className="hover:scale-110 active:scale-95 transition-transform hover:bg-red-500 hover:text-white p-2 rounded-full cursor-pointer "><FaArrowRight /></button>
                 </div>
             </div>
         </div>
