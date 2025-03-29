@@ -4,8 +4,8 @@ import parts from './../../../assets/images/about_us/parts.jpg'
 
 const AboutUs = () => {
     return (
-        <div className='my-20 flex h-[80vh] gap-10'>
-            <div className='flex-1/2 relative'>
+        <div className='my-20 flex gap-10'>
+            <div className='flex-1/2 h-[80vh] relative'>
                 <img src={person} className='rounded-lg h-[80%] object-cover' />
                 <img src={parts} className='absolute top-1/2 left-1/2 h-1/2 w-1/2 object-cover border-8 rounded-2xl' />
             </div>
