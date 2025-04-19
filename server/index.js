@@ -3,11 +3,17 @@ const express = require("express");
 const cors = require("cors");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const app = express();
+const jwt = require("jsonwebtoken");
+
 app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("car doctor server runnig");
+});
+
+app.post("/jwt", (req, res) => {
+  const user = req.body;
 });
 
 const uri = `mongodb+srv://${process.env.user}:${process.env.pass}@cluster0.2umnx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
