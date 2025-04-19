@@ -1,12 +1,27 @@
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa6";
 import { Link } from "react-router";
+import { useContext } from "react";
+import { AuthContext } from "../../context_providers/Contexts";
 
 const Login = () => {
+
+    const { loginWithEmail } = useContext(AuthContext);
 
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        if (password.length < 6) {
+            alert('Password must be at least 6 characters long');
+            return;
+        }
+        loginWithEmail(email, password)
+            .then(data => {
+                console.log(data.user);
+                alert('Login Successful');
+            }).catch(err => alert(err.message));
     }
 
     return (

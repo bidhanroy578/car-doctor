@@ -1,12 +1,28 @@
 import { FaGithub } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import { AuthContext } from "../../context_providers/Contexts";
+import { useContext } from "react";
 
 const SignUp = () => {
+
+    const { signUpWithEmail } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
+        // const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        if (password.length < 6) {
+            alert('Password must be at least 6 characters long');
+            return;
+        }
+        signUpWithEmail(email, password)
+            .then(data => {
+                console.log(data);
+
+            }).catch(err => console.log(err.message));
     }
     return (
         <div>
@@ -14,7 +30,7 @@ const SignUp = () => {
                 <h3 className=" font-semibold text-4xl text-center">Sign Up</h3>
                 <label className="block text-gray-700 text-lg font-semibold mb-2" htmlFor="name">
                     Name
-                    <input type="name" className="w-full mt-4 block text-sm p-3 px-5 border-2 border-[#E8E8E8] rounded-md" name="name" id="name" placeholder='Your Name' />
+                    <input type="text" className="w-full mt-4 block text-sm p-3 px-5 border-2 border-[#E8E8E8] rounded-md" name="name" id="name" placeholder='Your Name' />
                 </label>
                 <label className="block text-gray-700 text-lg font-semibold mb-2" htmlFor="email">
                     Email
