@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import logo from './../../assets/logo.svg'
 import { AiOutlineShopping } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
+import { FiLogIn } from "react-icons/fi";
 
 
 const Navbar = () => {
@@ -36,6 +37,7 @@ const Navbar = () => {
                 <button className='text-xl transition-transform hover:scale-115 active:scale-100'><AiOutlineShopping /></button>
                 <button className='transition-transform hover:scale-115 active:scale-100'><FaSearch /></button>
                 <button className='btn btn-secondary hover:scale-110 active:scale-100 transition-transform btn-outline'>Appointment</button>
+                <Link to='/login'>                <button className='btn btn-secondary hover:scale-110 active:scale-100 transition-transform btn-outline'><FiLogIn /></button></Link>
             </div>
         </div>
     );
