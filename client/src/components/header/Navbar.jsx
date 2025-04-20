@@ -3,9 +3,13 @@ import logo from './../../assets/logo.svg'
 import { AiOutlineShopping } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
+import { useContext } from 'react';
+import { AuthContext } from '../../context_providers/Contexts';
 
 
 const Navbar = () => {
+
+    const { user, logout } = useContext(AuthContext)
     const navLinks = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/about'>About</Link></li>
@@ -13,6 +17,11 @@ const Navbar = () => {
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link to='/contact'>Contact</Link></li>
     </>
+    const handleLogout = () => {
+        logout()
+            .then(alert('logout successful'))
+            .catch(err => alert(err.message))
+    }
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
@@ -37,7 +46,12 @@ const Navbar = () => {
                 <button className='text-xl transition-transform hover:scale-115 active:scale-100'><AiOutlineShopping /></button>
                 <button className='transition-transform hover:scale-115 active:scale-100'><FaSearch /></button>
                 <button className='btn btn-secondary hover:scale-110 active:scale-100 transition-transform btn-outline'>Appointment</button>
-                <Link to='/login'>                <button className='btn btn-secondary hover:scale-110 active:scale-100 transition-transform btn-outline'><FiLogIn /></button></Link>
+                {
+                    user ?
+                        <button onClick={handleLogout} className=' btn btn-secondary btn-outline hover:scale-105 active:scale-95 transition-transform'>logout</button>
+                        :
+                        <Link to='/login'><button className='btn btn-secondary hover:scale-110 active:scale-100 transition-transform btn-outline'><FiLogIn /></button></Link>
+                }
             </div>
         </div>
     );
